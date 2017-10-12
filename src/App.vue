@@ -150,7 +150,7 @@
         iota: {
           status: '',
           link: null,
-          provider: 'http://iota.bitfinex.com:80',
+          provider: 'https://iotanode.prizziota.com:443',
           connected: false,
           latestMilestone: '',
           latestSolidMilestone: '',
