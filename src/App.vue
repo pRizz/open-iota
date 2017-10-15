@@ -135,6 +135,7 @@
         customProvider: '',
         donationAddress: 'Coming soon...',
         providerList: [
+          // http nodes
           'http://iota.bitfinex.com:80',
           'http://service.iotasupport.com:14265',
           'http://eugene.iota.community:14265',
@@ -145,12 +146,17 @@
           'http://mainnet.necropaz.com:14500',
           'http://node.lukaseder.de:14265',
           'http://iotanode.prizziota.com:80',
-          'https://iotanode.prizziota.com:443'
+          'http://iota-node-apps.prizziota.com:80',
+          'http://iota.preissler.me:80',
+          // https nodes
+          'https://iotanode.prizziota.com:443',
+          'https://iota-node-apps.prizziota.com:443',
+          'https://iota.preissler.me:443'
         ],
         iota: {
           status: '',
           link: null,
-          provider: 'https://iotanode.prizziota.com:443',
+          provider: 'https://iota-node-apps.prizziota.com:443',
           connected: false,
           latestMilestone: '',
           latestSolidMilestone: '',
