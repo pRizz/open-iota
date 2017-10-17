@@ -111,7 +111,7 @@
     },
     beforeRouteUpdate (to, from, next) {
       this.searchInput = ''
-      this.searchType =  'Any'
+      this.searchType = 'Any'
       next()
     }
   }

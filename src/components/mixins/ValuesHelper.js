@@ -31,6 +31,6 @@ module.exports = {
     },
     toUSD(val) {
       return val * this.priceUSD / 1000000
-    },
+    }
   }
 };

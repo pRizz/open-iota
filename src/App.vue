@@ -190,14 +190,14 @@
         this.iota.link.api.getNodeInfo((err, success) => {
           if (err) {
             this.iota.status = 'Failed'
-          } else {
-            this.iota.status = 'Connected'
-            this.iota.connected = true
-            this.iota.latestMilestone = success.latestMilestone
-            this.iota.latestSolidMilestone = success.latestSolidSubtangleMilestone
-            this.iota.latestMilestoneIndex = success.latestMilestoneIndex
-            this.iota.latestSolidSubtangleMilestoneIndex = success.latestSolidSubtangleMilestoneIndex
+            return
           }
+          this.iota.status = 'Connected'
+          this.iota.connected = true
+          this.iota.latestMilestone = success.latestMilestone
+          this.iota.latestSolidMilestone = success.latestSolidSubtangleMilestone
+          this.iota.latestMilestoneIndex = success.latestMilestoneIndex
+          this.iota.latestSolidSubtangleMilestoneIndex = success.latestSolidSubtangleMilestoneIndex
         })
       }
     },
