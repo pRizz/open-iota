@@ -13,7 +13,7 @@ import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 Vue.use(Buefy)
 Vue.use(AsyncComputed)
-Vue.use(require('vue-moment'));
+Vue.use(require('vue-moment'))
 Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false

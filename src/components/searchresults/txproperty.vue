@@ -151,20 +151,35 @@
       </div>
     </div>
 
+    <div class="panel-block txrow">
+      <div class="columns">
+        <div class="column is-one-quarter content">
+          UTF-8 Decoded Message
+        </div>
+        <div class="column is-three-quarters field control">
+          <textarea readonly spellcheck="false" class="textarea"
+                    style="white-space: normal; font-size: small; font-family: Monospace; padding: 8px;">
+            {{ decodedUTF8FromMessage(tx) }}
+          </textarea>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 
 
 <script>
-  import ValueHelper from '../mixins/ValuesHelper';
+  import ValueHelper from '../mixins/ValuesHelper'
+  import TryteCodec from 'tryteutf8jsoncodec'
 
   export default {
     name: 'tx-property',
     mixins: [ValueHelper],
     props: ['tx', 'iota'],
     methods: {
-      decodedAsciiFromMessage: (iota, tx) => {
+      decodedAsciiFromMessage (iota, tx) {
         let message = tx.signatureMessageFragment
         if (message.length <= 0) {
           return ''
@@ -173,6 +188,17 @@
           message = message.slice(0, -1)
         }
         return iota.utils.fromTrytes(message)
+      },
+      decodedUTF8FromMessage (tx) {
+        let message = tx.signatureMessageFragment
+        if (message.length <= 0) {
+          return ''
+        }
+        try {
+          return TryteCodec.utf8StringFromTrytes(message)
+        } catch (e) {
+          return ''
+        }
       }
     }
   }

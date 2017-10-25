@@ -101,15 +101,11 @@
               this.resultType = 'tag'
               return resolve(res)
             })
-
           } else {
-
             this.iota.api.getTransactionsObjects([hash], (err, res) => {
               if (err || res.length <= 0 || res[0].hash === '999999999999999999999999999999999999999999999999999999999999999999999999999999999') {
-
                 this.iota.api.findTransactionObjects({addresses: [hash]}, (err, res) => {
                   if (err || res.length <= 0 || res[0].hash === '999999999999999999999999999999999999999999999999999999999999999999999999999999999') {
-
                     this.iota.api.findTransactionObjects({bundles: [hash]}, (err, res) => {
                       this.isLoading = false
                       if (err || res.length <= 0 || res[0].hash === '999999999999999999999999999999999999999999999999999999999999999999999999999999999') {
@@ -119,14 +115,12 @@
                       this.resultType = 'bundle'
                       return resolve(res)
                     })
-
                   } else {
                     this.isLoading = false
                     this.resultType = 'address'
                     return resolve(res)
                   }
                 })
-
               } else {
                 this.isLoading = false
                 this.resultType = 'tx'

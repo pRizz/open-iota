@@ -156,7 +156,7 @@
         iota: {
           status: '',
           link: null,
-          provider: 'https://iotanode.prizziota.com:443',
+          provider: 'https://iota-node-apps.prizziota.com:443',
           connected: false,
           latestMilestone: '',
           latestSolidMilestone: '',
