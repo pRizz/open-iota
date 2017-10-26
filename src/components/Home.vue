@@ -31,31 +31,6 @@
         </div>
       </div>
     </div>
-    <transition name="fade">
-      <div class="hero is-success is-bold" v-if="$route.name === 'Home'">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <h1 class="title is-2">Import Wallet</h1>
-            <div class="container has-text-centered">
-              <button class="button is-success is-inverted is-large is-outlined" :disabled="iota === null" @click="wip">Import
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
-    <transition name="fade">
-      <div class="hero is-info is-bold" v-if="$route.name === 'Home'">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <h1 class="title is-2">Create Wallet</h1>
-            <div class="container has-text-centered">
-              <button class="button is-info is-inverted is-large is-outlined" :disabled="iota === null" @click="wip">Create</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
 
     <router-view :iota="iota"></router-view>
 

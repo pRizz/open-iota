@@ -19,12 +19,16 @@
 
           </div>
           <div class="navbar-end">
-            <a href="https://github.com/lsquires/open-iota" class="navbar-item">
+
+            <div class="navbar-item" >
+              <a href="https://github.com/pRizz/open-iota" class="button" target="_blank">
               <span class="icon">
-                <b-icon icon="library_books" size="is-small"></b-icon>
+                <i class="fa fa-github"></i>
               </span>
-              <span>Github</span>
-            </a>
+                <span>GitHub</span>
+              </a>
+            </div>
+
             <div class="navbar-item">
               <b-dropdown @change="connectToIOTA" v-model="iota.provider" position="is-bottom-left">
 
@@ -92,31 +96,29 @@
         <div class="columns">
           <div class="column">
             <h1 class="heading title is-4">Open IOTA</h1>
-            <h1 class="subtitle is-6">Is a free, open-source project to provide a accessible and secure web wallet & explorer for IOTA</h1>
+            <h1 class="subtitle is-6">Is a free, open-source project to provide an accessible and secure tangle explorer for IOTA</h1>
           </div>
           <div class="column">
-            Code open source on github, deployed on surge.
-            To compile your own version, verify security or host it yourself see the github.
+            Code is open sourced on GitHub.
+            To compile your own version, verify security, or host it yourself, see the GitHub.
           </div>
           <div class="column">
-            <p>Created by Laurence Squires</p>
-            <ul>
-              <li><a href="mailto:openiota@gmail.com">openiota@gmail.com</a></li>
-              <li><a href="https://github.com/lsquires/open-iota">Github</a></li>
-            </ul>
-          </div>
-        </div>
-        <h1 class="subtitle is-6">It guarantees security by providing you with the choice to connect to any node you wish, and you can check the source and build this webapp yourself if you desire.</h1>
-
-        <div class="columns">
-          <div class="column is-half is-offset-one-quarter">
-          <h1 class="title is-5">Donation are always welcome! <3</h1>
-          <b-field class="subtitle">
-            <b-input expanded spellcheck="false" readonly :value="donationAddress"></b-input>
-            <p class="control">
-              <button class="button is-primary"  v-clipboard:copy="donationAddress">Copy</button>
+            <p>Created by Laurence Squires
+              <a class="button is-small" href="https://github.com/lsquires/open-iota" target="_blank">
+                <span class="icon is-small">
+                  <i class="fa fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
             </p>
-          </b-field>
+            <p>Forked by Peter Ryszkiewicz
+              <a class="button is-small" href="https://github.com/pRizz/open-iota" target="_blank">
+                <span class="icon is-small">
+                  <i class="fa fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+            </p>
           </div>
         </div>
       </div>
