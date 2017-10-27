@@ -29,6 +29,19 @@
     <div class="panel-block txrow">
       <div class="columns">
         <div class="column is-one-quarter content">
+          UTF-8 Decoded Address (<a href="https://www.npmjs.com/package/tryteutf8jsoncodec" target="_blank">tryteutf8jsoncodec</a>)
+        </div>
+        <div class="column is-three-quarters field control txvalue">
+          <router-link :to="`/search/address/${tx.address}`">
+            {{ decodedUTF8FromString(tx.address) }}
+          </router-link>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-block txrow">
+      <div class="columns">
+        <div class="column is-one-quarter content">
           Tag
         </div>
         <div class="column is-three-quarters field control txvalue">
@@ -140,7 +153,7 @@
     <div class="panel-block txrow">
       <div class="columns">
         <div class="column is-one-quarter content">
-          ASCII Decoded Message
+          ASCII Decoded Message (<a href="https://github.com/iotaledger/iota.lib.js" target="_blank">iota.utils.fromTrytes</a>)
         </div>
         <div class="column is-three-quarters field control">
           <textarea readonly spellcheck="false" class="textarea"
@@ -154,12 +167,12 @@
     <div class="panel-block txrow">
       <div class="columns">
         <div class="column is-one-quarter content">
-          UTF-8 Decoded Message
+          UTF-8 Decoded Message (<a href="https://www.npmjs.com/package/tryteutf8jsoncodec" target="_blank">tryteutf8jsoncodec</a>)
         </div>
         <div class="column is-three-quarters field control">
           <textarea readonly spellcheck="false" class="textarea"
                     style="white-space: normal; font-size: small; font-family: Monospace; padding: 8px;">
-            {{ decodedUTF8FromMessage(tx) }}
+            {{ decodedUTF8FromString(tx.signatureMessageFragment) }}
           </textarea>
         </div>
       </div>
@@ -189,13 +202,12 @@
         }
         return iota.utils.fromTrytes(message)
       },
-      decodedUTF8FromMessage (tx) {
-        let message = tx.signatureMessageFragment
-        if (message.length <= 0) {
+      decodedUTF8FromString (string) {
+        if (string.length <= 0) {
           return ''
         }
         try {
-          return TryteCodec.utf8StringFromTrytes(message)
+          return TryteCodec.utf8StringFromTrytes(string)
         } catch (e) {
           return ''
         }
