@@ -96,11 +96,24 @@
         <div class="columns">
           <div class="column">
             <h1 class="heading title is-4">Open IOTA</h1>
-            <h1 class="subtitle is-6">Is a free, open-source project to provide an accessible and secure tangle explorer for IOTA</h1>
+            <h1 class="subtitle is-6">A simple, free, open-source tangle explorer for IOTA</h1>
           </div>
           <div class="column">
-            Code is open sourced on GitHub.
-            To compile your own version, verify security, or host it yourself, see the GitHub.
+            <p>
+              For more information, view the README on
+              <a class="button is-small" href="https://github.com/pRizz/open-iota/blob/master/README.md" target="_blank">
+                  <span class="icon is-small">
+                    <i class="fa fa-github"></i>
+                  </span>
+                <span>GitHub</span>
+              </a>
+            </p>
+            <p>
+              This site is hosted by <a target="_blank" href="https://www.prizzventuresllc.com/">P Rizz Ventures LLC</a>
+            </p>
+            <p>
+              <a href="https://open-iota.prizziota.com/PrivacyPolicy.txt" target="_blank">Privacy Policy</a>
+            </p>
           </div>
           <div class="column">
             <p>Created by Laurence Squires
