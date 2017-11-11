@@ -185,7 +185,7 @@
 
 <script>
   import ValueHelper from '../mixins/ValuesHelper'
-  import TryteCodec from 'tryteutf8jsoncodec'
+  import TryteCodec from 'tryte-utf8-json-codec'
 
   export default {
     name: 'tx-property',
