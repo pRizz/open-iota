@@ -29,7 +29,7 @@
     <div class="panel-block txrow">
       <div class="columns">
         <div class="column is-one-quarter content">
-          UTF-8 Decoded Address (<a href="https://www.npmjs.com/package/tryteutf8jsoncodec" target="_blank">tryteutf8jsoncodec</a>)
+          UTF-8 Decoded Address (<a href="https://www.npmjs.com/package/tryte-utf8-json-codec" target="_blank">tryte-utf8-json-codec</a>)
         </div>
         <div class="column is-three-quarters field control txvalue">
           <router-link :to="`/search/address/${tx.address}`">
@@ -167,7 +167,7 @@
     <div class="panel-block txrow">
       <div class="columns">
         <div class="column is-one-quarter content">
-          UTF-8 Decoded Message (<a href="https://www.npmjs.com/package/tryteutf8jsoncodec" target="_blank">tryteutf8jsoncodec</a>)
+          UTF-8 Decoded Message (<a href="https://www.npmjs.com/package/tryte-utf8-json-codec" target="_blank">tryte-utf8-json-codec</a>)
         </div>
         <div class="column is-three-quarters field control">
           <textarea readonly spellcheck="false" class="textarea"
