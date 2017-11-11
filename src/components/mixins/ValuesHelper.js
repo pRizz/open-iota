@@ -23,11 +23,12 @@ module.exports = {
       let num = iota.utils.convertUnits(val, 'i', unit)
       let usd = this.toUSD(val)
       if(short) {
-        num = num.toFixed(Math.max(0,3 - (Math.round(num) + '').length))
-        usd = usd.toFixed(Math.max(0,3 - (Math.round(usd) + '').length))
+        num = num.toFixed(Math.max(0, 3 - (Math.round(num) + '').length))
+        usd = usd.toFixed(Math.max(0, 3 - (Math.round(usd) + '').length))
       }
+      const usdPerMiota = this.priceUSD.toFixed(3)
 
-      return `${num}${unit} ~$${usd}`
+      return `${num}${unit} ~$${usd} @ $${usdPerMiota}/Mi`
     },
     toUSD(val) {
       return val * this.priceUSD / 1000000

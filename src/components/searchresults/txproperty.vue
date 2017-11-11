@@ -58,7 +58,7 @@
           Value
         </div>
         <div class="column is-three-quarters field control txvalue">
-          {{toUnits(tx.value, false, iota)}} ({{tx.value}})
+          {{toUnits(tx.value, false, iota)}} ({{tx.value.toLocaleString()}} IOTA)
         </div>
       </div>
     </div>
