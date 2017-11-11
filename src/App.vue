@@ -20,12 +20,9 @@
           </div>
           <div class="navbar-end">
 
-            <div class="navbar-item" >
-              <a href="https://github.com/pRizz/open-iota" class="button" target="_blank">
-              <span class="icon">
-                <i class="fa fa-github"></i>
-              </span>
-                <span>GitHub</span>
+            <div class="navbar-item animated" v-bind:class="{'fadeInDown': priceUSD !== 0}" style="opacity: 0">
+              <a href="https://www.cryptocompare.com/coins/iot/overview/USD" class="button is-info" target="_blank">
+                ${{priceUSD}}/Mi
               </a>
             </div>
 
@@ -84,6 +81,16 @@
               </b-dropdown>
 
             </div>
+
+            <div class="navbar-item" >
+              <a href="https://github.com/pRizz/open-iota" class="button" target="_blank">
+              <span class="icon">
+                <i class="fa fa-github"></i>
+              </span>
+                <span>GitHub</span>
+              </a>
+            </div>
+            
           </div>
         </div>
       </nav>
@@ -141,9 +148,20 @@
 
 <script>
   import IOTA from 'iota.lib.js'
+  import ValueHelper from './components/mixins/ValuesHelper'
 
   export default {
     name: 'app',
+//    asyncComputed: {
+//      priceUSD: {
+//        get () {
+//          console.log('getting price async, ', ValueHelper.asyncComputed.priceUSD)
+//          return ValueHelper.asyncComputed.priceUSD
+//        },
+//        default: 0
+//      }
+//    },
+    mixins: [ValueHelper],
     data () {
       return {
         navVisible: false,
@@ -179,7 +197,10 @@
     computed: {
       providerHealth () {
         return this.iota.latestSolidSubtangleMilestoneIndex + ' / ' + this.iota.latestMilestoneIndex
-      }
+      },
+//      priceUSD () {
+//        return ValueHelper.asyncComputed.priceUSD
+//      }
     },
     methods: {
       addProvider () {

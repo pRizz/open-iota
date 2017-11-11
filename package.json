@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/e2e/specs"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "axios": "^0.16.2",
     "buefy": "^0.5.2",
     "font-awesome": "^4.7.0",

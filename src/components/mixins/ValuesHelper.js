@@ -2,8 +2,7 @@ module.exports = {
   asyncComputed: {
     priceUSD: {
       get () {
-        return this.axios.get('https://min-api.cryptocompare.com/data/price?fsym=IOT&tsyms=USD').
-        then(response => response.data.USD)
+        return this.axios.get('https://min-api.cryptocompare.com/data/price?fsym=IOT&tsyms=USD').then(response => response.data.USD)
       },
       default: 0
     }

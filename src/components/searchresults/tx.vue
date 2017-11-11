@@ -24,7 +24,7 @@
 <script>
 
   import TxProperty from './txproperty.vue'
-  import ValueHelper from '../mixins/ValuesHelper';
+  import ValueHelper from '../mixins/ValuesHelper'
 
   export default {
     components: {TxProperty},
