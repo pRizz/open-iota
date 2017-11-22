@@ -21,7 +21,12 @@
                 Current Balance
               </div>
               <div class="column field control txvalue">
-                {{ balance }}
+                <div>
+                  {{ balanceFormatted }}
+                </div>
+                <div>
+                  This is roughly <sup>1</sup>&frasl;<sub>{{ roundedFractionalSupplyFormatted }}</sub> the supply of IOTA (actual: <sup>1</sup>&frasl;<sub>{{ actualFractionalSupplyFormatted }}</sub>)
+                </div>
               </div>
             </div>
           </div>
@@ -60,15 +65,33 @@
     mounted () {
     },
     computed: {
-      balance () {
-        return (this.balances && this.balances.length) > 0 ?
-          this.toUnits(this.balances[0],  false, this.iota) : 'Calculating...'
+      balance() {
+        return (this.balances && this.balances.length) > 0 ? this.balances[0] : null
+      },
+      balanceFormatted () {
+        return this.balance ? this.toUnits(this.balance, false, this.iota) : 'Calculating...'
+      },
+      roundedFractionalSupplyFormatted() {
+        const denominatorPower = Math.trunc(Math.log10(this.actualFractionalSupply)) + 1
+        const normalizedDenominator = Math.pow(10, denominatorPower).toLocaleString()
+        return normalizedDenominator
+      },
+      actualFractionalSupply() {
+        const maxSupply = 2779530283277761
+        const fractionalSupply = this.balance / maxSupply
+        const denominator = 1 / fractionalSupply
+        return denominator
+      },
+      actualFractionalSupplyFormatted() {
+        return this.actualFractionalSupply.toLocaleString(undefined, {
+          maximumFractionDigits: 0
+        })
       }
     },
     asyncComputed: {
       balances: {
         lazy: true,
-          get () {
+        get () {
           return new Promise((resolve, reject) => {
             this.iota.api.getBalances([this.hash], 100, (err, res) => {
               if (err) {
