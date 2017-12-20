@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="column">
-        QR CODE
+          <canvas style="margin-top: -14px" ref="addressqrcode"></canvas>
         </div>
       </div>
       <hr>
@@ -52,7 +52,8 @@
 <script>
   import SearchTx from '@/components/searchresults/tx'
   import SearchBundle from '@/components/searchresults/bundle'
-  import ValueHelper from '../mixins/ValuesHelper';
+  import ValueHelper from '../mixins/ValuesHelper'
+  import QRCode from 'qrcode'
 
   export default {
     name: 'search-address',
@@ -63,6 +64,9 @@
     },
     props: ['iota', 'results', 'hash'],
     mounted () {
+      QRCode.toCanvas(this.$refs.addressqrcode, this.hash, (error) => {
+        if(error) { console.log(`Error while making qr code: ${error}`) }
+      })
     },
     computed: {
       balance() {
