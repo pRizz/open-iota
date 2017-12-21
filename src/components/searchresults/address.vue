@@ -24,7 +24,7 @@
                 <div>
                   {{ balanceFormatted }}
                 </div>
-                <div>
+                <div v-if="balance !== null">
                   This is roughly <sup>1</sup>&frasl;<sub>{{ roundedFractionalSupplyFormatted }}</sub> the supply of IOTA (actual: <sup>1</sup>&frasl;<sub>{{ actualFractionalSupplyFormatted }}</sub>)
                 </div>
               </div>
@@ -62,6 +62,11 @@
       SearchTx,
       SearchBundle
     },
+    data() {
+      return {
+        balanceRetrievalError: null
+      }
+    },
     props: ['iota', 'results', 'hash'],
     mounted () {
       QRCode.toCanvas(this.$refs.addressqrcode, this.hash, (error) => {
@@ -73,6 +78,9 @@
         return (this.balances && this.balances.length) > 0 ? this.balances[0] : null
       },
       balanceFormatted () {
+        if(this.balanceRetrievalError) {
+          return 'An error occurred while retrieving the balance'
+        }
         return this.balance ? this.toUnits(this.balance, false, this.iota) : 'Calculating...'
       },
       roundedFractionalSupplyFormatted() {
@@ -96,9 +104,11 @@
       balances: {
         lazy: true,
         get () {
+          this.balanceRetrievalError = null
           return new Promise((resolve, reject) => {
             this.iota.api.getBalances([this.hash], 100, (err, res) => {
               if (err) {
+                this.balanceRetrievalError = err
                 return resolve([])
               }
               return resolve(res.balances)
