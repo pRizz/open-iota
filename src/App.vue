@@ -90,13 +90,20 @@
                 <span>GitHub</span>
               </a>
             </div>
-            
+
           </div>
         </div>
       </nav>
     </div>
 
     <router-view :iota="iota.link"></router-view>
+
+
+    <!-- Leaderboard Ad 1 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5014469443290772"
+         data-ad-slot="1008368143"></ins>
 
     <footer class="footer">
       <div class="container">
@@ -143,14 +150,39 @@
         </div>
       </div>
     </footer>
+
+    <b-modal :active.sync="isProviderModalActive">
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Changing IOTA Server</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <div>
+            Doing this will open this website in another tab.
+          </div>
+          <br/>
+          <div>
+            The technical reason for this is that when you interact with an <code>http</code> server, but the website itself is served over <code>https</code>, the requests will be blocked by the web browser. (This is a security feature built into web browsers.) Therefore, you must go to the <code>http</code> version of this website to interact with <code>http</code> IOTA servers.
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" @click="openHTTPSite">OK</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
+    </b-modal>
+
   </div>
 </template>
 
 <script>
   import IOTA from 'iota.lib.js'
   import ValueHelper from './components/mixins/ValuesHelper'
+  import BModal from 'buefy/src/components/modal/Modal'
 
   export default {
+    components: {BModal},
     name: 'app',
 //    asyncComputed: {
 //      priceUSD: {
@@ -169,7 +201,6 @@
         donationAddress: 'Coming soon...',
         providerList: [
           // http nodes
-          'http://service.iotasupport.com:14265',
           'http://eugene.iota.community:14265',
           'http://node01.iotatoken.nl:14265',
           'http://node02.iotatoken.nl:14265',
@@ -191,7 +222,9 @@
           latestSolidMilestone: '',
           latestMilestoneIndex: 0,
           latestSolidSubtangleMilestoneIndex: 0
-        }
+        },
+        isProviderModalActive: false,
+        intendedHTTPSite: null
       }
     },
     computed: {
@@ -210,7 +243,16 @@
         }
       },
       connectToIOTA () {
-        this.iota.status = 'Connecting'
+        // if(window.location.protocol.includes('http:')) {
+        if(window.location.protocol.includes('https:') && this.iota.provider.includes('http:')) {
+          this.isProviderModalActive = true
+          this.intendedHTTPSite = this.iota.provider
+          // FIXME: this.iota.provider is stale
+          // this.iota.provider = this.iota.link.provider ?
+          return
+        }
+
+        this.iota.status = 'Connecting' // TODO: rename this.iota to this.iotaConnectionController
         this.iota.connected = false
         this.iota.latestMilestoneIndex = 0
         this.iota.latestSolidSubtangleMilestoneIndex = 0
@@ -231,6 +273,10 @@
           this.iota.latestMilestoneIndex = success.latestMilestoneIndex
           this.iota.latestSolidSubtangleMilestoneIndex = success.latestSolidSubtangleMilestoneIndex
         })
+      },
+      openHTTPSite() {
+        this.isProviderModalActive = false
+        window.open(window.location.href.replace('https:', 'http:'), '_blank')
       }
     },
     mounted () {
