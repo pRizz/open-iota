@@ -245,8 +245,8 @@
       connectToIOTA () {
         // if(window.location.protocol.includes('http:')) {
         if(window.location.protocol.includes('https:') && this.iota.provider.includes('http:')) {
-          this.isProviderModalActive = true
           this.intendedHTTPSite = this.iota.provider
+          this.isProviderModalActive = true
           // FIXME: this.iota.provider is stale
           // this.iota.provider = this.iota.link.provider ?
           return

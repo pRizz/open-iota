@@ -58,7 +58,7 @@
           Value
         </div>
         <div class="column is-three-quarters field control txvalue">
-          {{toUnits(tx.value, false, iota)}} ({{tx.value.toLocaleString()}} IOTA)
+          {{ valueFormatted }}
         </div>
       </div>
     </div>
@@ -191,6 +191,12 @@
     name: 'tx-property',
     mixins: [ValueHelper],
     props: ['tx', 'iota'],
+    computed: {
+      valueFormatted() {
+        if(this.tx.value === 0) { return '0' }
+        return `${this.toUnits(this.tx.value, false, this.iota)} (${this.tx.value.toLocaleString()} IOTA)`
+      }
+    },
     methods: {
       decodedAsciiFromMessage (iota, tx) {
         let message = tx.signatureMessageFragment
