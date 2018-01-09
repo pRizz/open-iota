@@ -62,7 +62,8 @@
                 <div v-for="prov in providerList">
                   <b-dropdown-item :value="prov">
                     <div class="media">
-                      <b-icon class="media-left" icon="public"></b-icon>
+                      <b-icon v-if="prov.includes('https:')" class="media-left" icon="lock"></b-icon>
+                      <b-icon v-else class="media-left" icon="public"></b-icon>
                       <div class="media-content">
                         <h3>{{ prov }}</h3>
                       </div>
@@ -181,42 +182,55 @@
   import ValueHelper from './components/mixins/ValuesHelper'
   import BModal from 'buefy/src/components/modal/Modal'
 
+  // public node list from IOTA's mainnet nodes, https://iotasupport.com/providers.json, and http://iotanode.host/
+  const defaultProviderList = [
+    // http nodes
+    'http://eugene.iota.community:14265',
+    'http://node01.iotatoken.nl:14265',
+    'http://node02.iotatoken.nl:14265',
+    'http://node03.iotatoken.nl:14265',
+    'http://mainnet.necropaz.com:14500',
+    'http://node.lukaseder.de:14265',
+    'http://iota.preissler.me:80',
+    'http://iota-node-apps.prizziota.com:80',
+    'http://iota-node-nelson.prizziota.com:80',
+    // https nodes
+    'https://iota.preissler.me:443',
+    'https://iota-node-apps.prizziota.com:443',
+    'https://iota-node-nelson.prizziota.com:443',
+    'https://iotanode.us:443',
+    'https://iri2-api.iota.fm:443',
+    'https://iri3-api.iota.fm:443',
+    'https://nelson1-api.iota.fm:443',
+    'https://node.iota-community.org:443',
+    'https://node.iota.dance:443',
+    'https://node.neffware.com:443',
+    'https://node1.iotaner.org:443',
+    'https://nodes.iota.cafe:443',
+    'https://wallet1.iota.town:443',
+    'https://wallet2.iota.town:443',
+  ]
+
+  const httpsProviders = defaultProviderList.filter((provider) => {
+    return provider.includes('https://')
+  })
+
+  const initialProvider = httpsProviders[Math.floor(Math.random() * httpsProviders.length)]
+
   export default {
     components: {BModal},
     name: 'app',
-//    asyncComputed: {
-//      priceUSD: {
-//        get () {
-//          console.log('getting price async, ', ValueHelper.asyncComputed.priceUSD)
-//          return ValueHelper.asyncComputed.priceUSD
-//        },
-//        default: 0
-//      }
-//    },
     mixins: [ValueHelper],
     data () {
       return {
         navVisible: false,
         customProvider: '',
         donationAddress: 'Coming soon...',
-        providerList: [
-          // http nodes
-          'http://eugene.iota.community:14265',
-          'http://node01.iotatoken.nl:14265',
-          'http://node02.iotatoken.nl:14265',
-          'http://node03.iotatoken.nl:14265',
-          'http://mainnet.necropaz.com:14500',
-          'http://node.lukaseder.de:14265',
-          'http://iotanode.prizziota.com:80',
-          'http://iota-node-apps.prizziota.com:80',
-          // https nodes
-          'https://iotanode.prizziota.com:443',
-          'https://iota-node-apps.prizziota.com:443',
-        ],
+        providerList: defaultProviderList,
         iota: {
           status: '',
           link: null,
-          provider: 'https://iota-node-apps.prizziota.com:443',
+          provider: initialProvider,
           connected: false,
           latestMilestone: '',
           latestSolidMilestone: '',
