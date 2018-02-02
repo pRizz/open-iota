@@ -272,7 +272,10 @@
           provider: this.iota.provider
         })
 
+        let currentLink = this.iota.link
+
         this.iota.link.api.getNodeInfo((err, success) => {
+          if(currentLink !== this.iota.link) { return }
           if (err) {
             this.iota.status = 'Failed'
             return
