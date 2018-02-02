@@ -159,7 +159,7 @@
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">Changing IOTA Server</p>
-          <button class="delete" aria-label="close"></button>
+          <button class="delete" aria-label="close" @click="closeModal"></button>
         </header>
         <section class="modal-card-body">
           <div>
@@ -172,7 +172,7 @@
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success" @click="openHTTPSite">OK</button>
-          <button class="button">Cancel</button>
+          <button class="button" @click="closeModal">Cancel</button>
         </footer>
       </div>
     </b-modal>
@@ -194,10 +194,8 @@
     'http://node03.iotatoken.nl:14265',
     'http://mainnet.necropaz.com:14500',
     'http://node.lukaseder.de:14265',
-    'http://iota-node-apps.prizziota.com:80',
     'http://iota-node-nelson.prizziota.com:80',
     // https nodes
-    'https://iota-node-apps.prizziota.com:443',
     'https://iota-node-nelson.prizziota.com:443',
     'https://iotanode.us:443',
     'https://iri2-api.iota.fm:443',
@@ -291,6 +289,9 @@
       openHTTPSite() {
         this.isProviderModalActive = false
         window.open(window.location.href.replace('https:', 'http:'), '_blank')
+      },
+      closeModal() {
+        this.isProviderModalActive = false
       }
     },
     mounted () {
