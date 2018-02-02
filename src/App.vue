@@ -56,6 +56,9 @@
                   </b-field>
                 </b-dropdown-item>
                 <b-dropdown-item custom>
+                  Node version: <b>{{ iota.version || "..." }}</b>
+                </b-dropdown-item>
+                <b-dropdown-item custom>
                   Node health: <b>{{ providerHealth }}</b>
                 </b-dropdown-item>
                 <hr class="dropdown-divider">
@@ -191,11 +194,9 @@
     'http://node03.iotatoken.nl:14265',
     'http://mainnet.necropaz.com:14500',
     'http://node.lukaseder.de:14265',
-    'http://iota.preissler.me:80',
     'http://iota-node-apps.prizziota.com:80',
     'http://iota-node-nelson.prizziota.com:80',
     // https nodes
-    'https://iota.preissler.me:443',
     'https://iota-node-apps.prizziota.com:443',
     'https://iota-node-nelson.prizziota.com:443',
     'https://iotanode.us:443',
@@ -244,10 +245,7 @@
     computed: {
       providerHealth () {
         return this.iota.latestSolidSubtangleMilestoneIndex + ' / ' + this.iota.latestMilestoneIndex
-      },
-//      priceUSD () {
-//        return ValueHelper.asyncComputed.priceUSD
-//      }
+      }
     },
     methods: {
       addProvider () {
@@ -270,6 +268,7 @@
         this.iota.connected = false
         this.iota.latestMilestoneIndex = 0
         this.iota.latestSolidSubtangleMilestoneIndex = 0
+        this.iota.version = null
 
         this.iota.link = new IOTA({
           provider: this.iota.provider
@@ -286,6 +285,7 @@
           this.iota.latestSolidMilestone = success.latestSolidSubtangleMilestone
           this.iota.latestMilestoneIndex = success.latestMilestoneIndex
           this.iota.latestSolidSubtangleMilestoneIndex = success.latestSolidSubtangleMilestoneIndex
+          this.iota.version = success.appVersion
         })
       },
       openHTTPSite() {
