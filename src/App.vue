@@ -207,14 +207,10 @@
     'https://node1.iotaner.org:443',
     'https://nodes.iota.cafe:443',
     'https://wallet1.iota.town:443',
-    'https://wallet2.iota.town:443',
+    'https://wallet2.iota.town:443'
   ]
 
-  const httpsProviders = defaultProviderList.filter((provider) => {
-    return provider.includes('https://')
-  })
-
-  const initialProvider = httpsProviders[Math.floor(Math.random() * httpsProviders.length)]
+  const initialProvider = 'https://iota-node-nelson.prizziota.com:443'
 
   export default {
     components: {BModal},
