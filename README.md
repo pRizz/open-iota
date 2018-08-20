@@ -1,5 +1,7 @@
 # open-iota
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/pRizz/open-iota.svg)](https://greenkeeper.io/)
+
 > A open source explorer for the IOTA tangle
 
 [open-iota.prizziota.com](https://open-iota.prizziota.com/#/)
