@@ -2,17 +2,14 @@
 
 > A open source explorer for the IOTA tangle
 
-[open-iota.surge.sh](open-iota.surge.sh)
-
-The Landing Page:
-![Alt text](screenshots/screencapture-open-iota-surge-sh-1506348040261.png?raw=true "Landing Page")
+[open-iota.prizziota.com](https://open-iota.prizziota.com/#/)
 
 A Bundle:
 ![Alt text](screenshots/screencapture-localhost-8080-1506348260900.png?raw=true "A bundle view")
 
 This web wallet is designed for the IOTA network. It allows the user to access the network safely and securely from any device, the web app connects to a user configurable node and uses it to get all the infomation about the network. At no point will the users seed ever be exposed to the node or any other third party.
    
-It is is written in VueJS 2, using single file components, vue-async-computed and no vuex store yet. It builds using webpack and is currently deployed on surge
+It is is written in VueJS 2, using single file components, vue-async-computed and no vuex store yet. It builds using webpack.
 
 
 ## So far
