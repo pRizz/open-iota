@@ -184,6 +184,10 @@
   import IOTA from 'iota.lib.js'
   import ValueHelper from './components/mixins/ValuesHelper'
   import BModal from 'buefy/src/components/modal/Modal'
+  import TryteCodec from 'tryte-utf8-json-codec'
+  import curlTransaction from 'curl-transaction-core'
+  import curlImpl from 'curl-transaction-webgl2-impl'
+  import { promoteTransaction } from './utils/TransactionPromoter'
 
   // public node list from IOTA's mainnet nodes, https://iotasupport.com/providers.json, and http://iotanode.host/
   const defaultProviderList = [
@@ -211,6 +215,8 @@
   ]
 
   const initialProvider = 'https://iota-node-nelson.prizziota.com:443'
+
+  let localAttachToTangle = null
 
   export default {
     components: {BModal},
@@ -268,6 +274,8 @@
           provider: this.iota.provider
         })
 
+        this.iota.link.api.attachToTangle = localAttachToTangle
+
         let currentLink = this.iota.link
 
         this.iota.link.api.getNodeInfo((err, success) => {
@@ -294,6 +302,14 @@
       }
     },
     mounted () {
+      if(!curlImpl.error) {
+        localAttachToTangle = curlTransaction({ curlImpl }).localAttachToTangle
+        console.log('Your browser does support WebGL2')
+      } else {
+        console.error('Your browser does not support WebGL2')
+        this.isWebGL2Supported = false
+      }
+
       this.connectToIOTA()
     }
   }
