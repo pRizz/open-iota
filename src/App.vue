@@ -184,10 +184,8 @@
   import IOTA from 'iota.lib.js'
   import ValueHelper from './components/mixins/ValuesHelper'
   import BModal from 'buefy/src/components/modal/Modal'
-  import TryteCodec from 'tryte-utf8-json-codec'
   import curlTransaction from 'curl-transaction-core'
   import curlImpl from 'curl-transaction-webgl2-impl'
-  import { promoteTransaction } from './utils/TransactionPromoter'
 
   // public node list from IOTA's mainnet nodes, https://iotasupport.com/providers.json, and http://iotanode.host/
   const defaultProviderList = [
