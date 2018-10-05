@@ -118,13 +118,14 @@
 
     <router-view :iota="iota.link"></router-view>
 
-
-    <!-- Leaderboard Ad 1 -->
+    <!-- Open IOTA Ad -->
     <ins class="adsbygoogle"
-         style="display:inline-block;width:728px;height:90px"
+         style="display:block"
          data-ad-client="ca-pub-5014469443290772"
-         data-ad-slot="1008368143"></ins>
-
+         data-ad-slot="8143969435"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    
     <footer class="footer">
       <div class="container">
         <div class="columns">

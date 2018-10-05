@@ -1,8 +1,8 @@
 {
   "name": "open-iota",
   "version": "1.0.0",
-  "description": "A open source explorer for the IOTA tangle",
-  "author": "Laurence <laurence.j.squires@gmail.com>",
+  "description": "An open source explorer for the IOTA tangle",
+  "author": "Peter Ryszkiewicz, Laurence <laurence.j.squires@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
