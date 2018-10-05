@@ -9,7 +9,7 @@ import 'buefy/lib/buefy.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueClipboard from 'vue-clipboard2'
-import 'font-awesome/css/font-awesome.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import 'animate.css'
 
 Vue.use(VueClipboard)

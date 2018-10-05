@@ -33,6 +33,13 @@
                     'is-loading': iota.status === 'Connecting',
                     'is-primary': iota.status === 'Connected',
                     'is-danger': iota.status === 'Failed'}">
+                  <span class="icon is-small">
+                    <i class="fa" :class="{
+                    'fa-wifi': iota.status === 'Connected',
+                    'fas fa-exclamation-triangle': iota.status === 'Failed',
+                    'fa-spinner fa-pulse': iota.status === 'Connecting'
+                    }"></i>
+                  </span>
                   <span> {{ this.iota.status }} </span>
                   <b-icon icon="arrow_drop_down"></b-icon>
                 </button>
@@ -87,9 +94,18 @@
             </div>
 
             <div class="navbar-item" >
+              <a href="http://itsfe.prizziota.com/" class="button is-success" target="_blank">
+              <span class="icon">
+                <i class="fas fa-exchange-alt"></i>
+              </span>
+                <span>Live Transactions</span>
+              </a>
+            </div>
+
+            <div class="navbar-item" >
               <a href="https://github.com/pRizz/open-iota" class="button" target="_blank">
               <span class="icon">
-                <i class="fa fa-github"></i>
+                <i class="fab fa-github"></i>
               </span>
                 <span>GitHub</span>
               </a>
@@ -121,7 +137,7 @@
               For more information, view the README on
               <a class="button is-small" href="https://github.com/pRizz/open-iota/blob/master/README.md" target="_blank">
                   <span class="icon is-small">
-                    <i class="fa fa-github"></i>
+                    <i class="fab fa-github"></i>
                   </span>
                 <span>GitHub</span>
               </a>
@@ -137,7 +153,7 @@
             <p>Created by Laurence Squires
               <a class="button is-small" href="https://github.com/lsquires/open-iota" target="_blank">
                 <span class="icon is-small">
-                  <i class="fa fa-github"></i>
+                  <i class="fab fa-github"></i>
                 </span>
                 <span>GitHub</span>
               </a>
@@ -145,7 +161,7 @@
             <p>Forked by Peter Ryszkiewicz
               <a class="button is-small" href="https://github.com/pRizz/open-iota" target="_blank">
                 <span class="icon is-small">
-                  <i class="fa fa-github"></i>
+                  <i class="fab fa-github"></i>
                 </span>
                 <span>GitHub</span>
               </a>
