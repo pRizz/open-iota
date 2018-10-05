@@ -1,10 +1,10 @@
 import TryteCodec from 'tryte-utf8-json-codec'
 
 const transfer = [{
-  address: ''.padEnd(81, '9'),
+  address: 'OPEN9IOTA9PROMOTER9PRIZZ'.padEnd(81, '9'),
   value: 0,
   message: TryteCodec.trytesFromUTF8String('This promotion transaction was created by open-iota at https://open-iota.prizziota.com/'),
-  tag: 'OPENIOTA'
+  tag: 'OPEN9IOTA9PRIZZ'
 }]
 
 // returns a depth in [4, 12] inclusive
