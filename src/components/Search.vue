@@ -9,6 +9,13 @@
         <div v-else>
           <h1 class="subtitle is-6">Found {{ stringNumberOfResults }} for {{ hash }} ({{resultType}})</h1>
           <hr>
+
+          <!-- Open IOTA Leaderboard -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;"
+               data-ad-client="ca-pub-5014469443290772"
+               data-ad-slot="1265260966"></ins>
+
           <search-tx v-if="resultType === 'tx'" :iota="iota" :results="results"></search-tx>
           <search-tx v-if="resultType === 'tag'" :iota="iota" :isCollapsed="true" :results="results"></search-tx>
           <search-bundle v-if="resultType === 'bundle'" :iota="iota" :hash="hash" :results="results"></search-bundle>
