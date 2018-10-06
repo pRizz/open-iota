@@ -12,3 +12,5 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+
+dist/
